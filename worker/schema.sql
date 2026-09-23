@@ -7,3 +7,5 @@ CREATE TABLE IF NOT EXISTS checkins (id TEXT PRIMARY KEY,user_id TEXT NOT NULL,d
 CREATE INDEX IF NOT EXISTS idx_sessions_user ON sessions(user_id);
 CREATE INDEX IF NOT EXISTS idx_courses_user_week ON courses(user_id,week);
 CREATE INDEX IF NOT EXISTS idx_checkins_user_date ON checkins(user_id,date_key);
+CREATE TABLE IF NOT EXISTS registration_otps (email TEXT PRIMARY KEY,code_hash TEXT NOT NULL,name TEXT NOT NULL,password_hash TEXT NOT NULL,expires_at INTEGER NOT NULL,attempts INTEGER NOT NULL DEFAULT 0,last_sent_at INTEGER NOT NULL);
+CREATE INDEX IF NOT EXISTS idx_registration_otps_expiry ON registration_otps(expires_at);
