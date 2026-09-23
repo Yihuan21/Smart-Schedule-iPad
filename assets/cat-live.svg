@@ -1,1 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eee7ff"/><stop offset="1" stop-color="#e6f7ff"/></linearGradient></defs><rect width="520" height="420" rx="56" fill="url(#g)"/><ellipse cx="260" cy="366" rx="145" ry="22" fill="#8b78d8" opacity=".16"><animate attributeName="rx" values="145;132;145" dur="2.8s" repeatCount="indefinite"/></ellipse><g><path d="M170 170 128 65l94 56q38-17 76 0l94-56-40 105" fill="#514067" stroke="#2b2238" stroke-width="10" stroke-linejoin="round"/><path d="M170 174c0-72 40-116 90-116s90 44 90 116v64c0 74-40 112-90 112s-90-38-90-112z" fill="#f7dccb" stroke="#2b2238" stroke-width="10"/><path d="M184 162q16-74 76-104 60 30 76 104-38-38-76-38t-76 38z" fill="#514067"/><path d="M148 94l-20-29M372 94l20-29" stroke="#e7a8c7" stroke-width="8" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" values="0 148 94;8 148 94;0 148 94" dur="2.4s" repeatCount="indefinite"/></path><g><ellipse cx="225" cy="210" rx="15" ry="22" fill="#7661d5"/><ellipse cx="295" cy="210" rx="15" ry="22" fill="#7661d5"/><circle cx="229" cy="204" r="5" fill="#fff"/><circle cx="299" cy="204" r="5" fill="#fff"/><path d="M209 202q16-9 32 0M279 202q16-9 32 0" stroke="#f7dccb" stroke-width="12" stroke-linecap="round"><animate attributeName="d" values="M209 202q16-9 32 0M279 202q16-9 32 0;M209 211q16 0 32 0M279 211q16 0 32 0;M209 202q16-9 32 0M279 202q16-9 32 0" dur="4.2s" repeatCount="indefinite"/></path></g><path d="M244 244q16 13 32 0" fill="none" stroke="#a05878" stroke-width="7" stroke-linecap="round"/><path d="M182 276q78 42 156 0l34 86H148z" fill="#fff" stroke="#2b2238" stroke-width="10"/><rect x="204" y="294" width="112" height="70" rx="13" fill="#d9d0ff" stroke="#7661d5" stroke-width="7"><animateTransform attributeName="transform" type="translate" values="0 0;0 4;0 0" dur="2.6s" repeatCount="indefinite"/></rect><path d="M225 314h70M225 334h52" stroke="#7661d5" stroke-width="7" stroke-linecap="round"/><path d="M179 292q-48 25-63 70M341 292q48 25 63 70" fill="none" stroke="#f7dccb" stroke-width="24" stroke-linecap="round"/><g fill="#8f7add"><circle cx="102" cy="112" r="5"><animate attributeName="cy" values="112;98;112" dur="2.2s" repeatCount="indefinite"/></circle><circle cx="414" cy="154" r="5"><animate attributeName="cy" values="154;138;154" dur="2.7s" repeatCount="indefinite"/></circle></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 620">
+<defs>
+  <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5b477d"/><stop offset=".55" stop-color="#7b5b9b"/><stop offset="1" stop-color="#b37ba9"/></linearGradient>
+  <linearGradient id="dress" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8d72dc"/><stop offset="1" stop-color="#c98fc3"/></linearGradient>
+  <linearGradient id="ear" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#6a4d82"/><stop offset="1" stop-color="#49365e"/></linearGradient>
+  <filter id="shadow"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+<ellipse cx="260" cy="575" rx="145" ry="22" fill="#6f5a9d" opacity=".16"><animate attributeName="rx" values="145;128;145" dur="3s" repeatCount="indefinite"/></ellipse>
+<g>
+  <!-- tail -->
+  <path d="M395 440c72 10 91 70 55 108-22 23-62 17-65-10-3-25 32-30 43-11 9-22-8-40-40-40" fill="none" stroke="#5d477d" stroke-width="25" stroke-linecap="round"/>
+  <path d="M395 440c72 10 91 70 55 108-22 23-62 17-65-10-3-25 32-30 43-11" fill="none" stroke="#a477a5" stroke-width="8" stroke-linecap="round" opacity=".8"/>
+  <!-- hair silhouette -->
+  <path d="M130 218c-16-78 8-155 78-185 33-15 83-17 118 0 70 34 89 107 70 185l-13 114c-7 59-43 109-123 109s-116-50-123-109z" fill="url(#hair)" stroke="#342741" stroke-width="9"/>
+  <!-- cat ears -->
+  <path d="M146 134 102 30q-7-18 11-10l111 58z" fill="url(#ear)" stroke="#342741" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M374 134 418 30q7-18-11-10L296 78z" fill="url(#ear)" stroke="#342741" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M135 86 121 48l69 37zM385 86l14-38-69 37z" fill="#e9a9c8"/>
+  <!-- face -->
+  <path d="M156 196c0-83 43-128 104-128s104 45 104 128v76c0 86-49 131-104 131s-104-45-104-131z" fill="#f8d8c9" stroke="#342741" stroke-width="9"/>
+  <!-- bangs -->
+  <path d="M151 178c8-74 50-112 109-112 59 0 101 38 109 112-28-24-47-46-63-78-10 34-33 60-58 79-8-28-8-55-6-76-18 35-48 63-91 75z" fill="url(#hair)" stroke="#342741" stroke-width="8" stroke-linejoin="round"/>
+  <!-- eyes -->
+  <g>
+    <ellipse cx="211" cy="225" rx="25" ry="34" fill="#6f57c8"/>
+    <ellipse cx="309" cy="225" rx="25" ry="34" fill="#6f57c8"/>
+    <ellipse cx="214" cy="222" rx="13" ry="20" fill="#9f86ed"/>
+    <ellipse cx="312" cy="222" rx="13" ry="20" fill="#9f86ed"/>
+    <circle cx="218" cy="211" r="8" fill="#fff"/>
+    <circle cx="316" cy="211" r="8" fill="#fff"/>
+    <circle cx="207" cy="239" r="4" fill="#fff" opacity=".8"/>
+    <circle cx="305" cy="239" r="4" fill="#fff" opacity=".8"/>
+    <path d="M181 187q29-25 59 0M279 187q30-25 59 0" fill="none" stroke="#49365e" stroke-width="9" stroke-linecap="round"/>
+    <path d="M185 232q18 10 35 0M300 232q18 10 35 0" fill="none" stroke="#e99bb8" stroke-width="6" stroke-linecap="round" opacity=".65"/>
+  </g>
+  <!-- nose and smile -->
+  <path d="M254 254q6-5 12 0" fill="none" stroke="#a85d78" stroke-width="5" stroke-linecap="round"/>
+  <path d="M245 271q15 18 30 0" fill="none" stroke="#a85d78" stroke-width="6" stroke-linecap="round"/>
+  <!-- hair side locks -->
+  <path d="M157 258q-38 49-22 126 9 44 49 63l-7-100zM363 258q38 49 22 126-9 44-49 63l7-100z" fill="url(#hair)" stroke="#342741" stroke-width="8"/>
+  <!-- neck -->
+  <path d="M226 370v38q34 23 68 0v-38" fill="#f8d8c9" stroke="#342741" stroke-width="8"/>
+  <!-- outfit -->
+  <path d="M213 395q47 25 94 0l45 44q-17 61-35 107H203q-18-46-35-107z" fill="url(#dress)" stroke="#342741" stroke-width="9"/>
+  <path d="M208 397q52 31 104 0l-15 55q-37 20-74 0z" fill="#fff" opacity=".92" stroke="#342741" stroke-width="7"/>
+  <path d="M260 422v124" stroke="#6b55b7" stroke-width="7" opacity=".65"/>
+  <path d="M189 469q71 27 142 0" fill="none" stroke="#f3c4df" stroke-width="8" opacity=".75"/>
+  <!-- arms -->
+  <path d="M176 438q-38 34-47 91" fill="none" stroke="#f8d8c9" stroke-width="27" stroke-linecap="round"/>
+  <path d="M344 438q38 34 47 91" fill="none" stroke="#f8d8c9" stroke-width="27" stroke-linecap="round"/>
+  <path d="M130 526q-13 7-25-1" fill="none" stroke="#f8d8c9" stroke-width="22" stroke-linecap="round"/>
+  <path d="M390 526q13 7 25-1" fill="none" stroke="#f8d8c9" stroke-width="22" stroke-linecap="round"/>
+  <!-- cat paws badge -->
+  <g transform="translate(225 464)">
+    <rect x="0" y="0" width="70" height="54" rx="18" fill="#fff" stroke="#765fd0" stroke-width="5"/>
+    <path d="M35 18c-12-15-27 1-15 12 5 5 10 7 15 13 5-6 10-8 15-13 12-11-3-27-15-12z" fill="#e7a1c0"/>
+  </g>
+  <!-- lively floating accents -->
+  <g fill="#8d76df">
+    <circle cx="82" cy="196" r="6"><animate attributeName="cy" values="196;177;196" dur="2.1s" repeatCount="indefinite"/></circle>
+    <circle cx="438" cy="230" r="6"><animate attributeName="cy" values="230;210;230" dur="2.6s" repeatCount="indefinite"/></circle>
+  </g>
+  <!-- blink -->
+  <g opacity="0">
+    <path d="M185 225q26 18 52 0M283 225q26 18 52 0" fill="none" stroke="#49365e" stroke-width="8" stroke-linecap="round">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" dur="4.8s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</g>
+</svg>
