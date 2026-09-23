@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f7fb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="智能课程表">
+  <meta name="description" content="iPad 友好的 AI 智能课程表">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>智能课程表</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">SMART SCHEDULE</div>
+        <h1>课程表</h1>
+      </div>
+      <div class="top-actions">
+        <button id="settingsBtn" class="icon-btn" aria-label="AI 设置">⚙</button>
+        <button id="helpBtn" class="icon-btn" aria-label="帮助">?</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="week-bar">
+        <button id="prevWeek" class="round-btn" aria-label="上一周">‹</button>
+        <div class="week-center">
+          <strong id="weekTitle">第 1 周</strong>
+          <button id="todayBtn" class="text-btn">今天</button>
+        </div>
+        <button id="nextWeek" class="round-btn" aria-label="下一周">›</button>
+      </section>
+
+      <section class="hero-card">
+        <div>
+          <div class="hero-title">把课程表交给 AI 整理</div>
+          <div class="hero-subtitle">上传一张清晰、完整的课程表图片，识别后仍可逐项修改。</div>
+        </div>
+        <button id="uploadBtn" class="primary-btn">上传课程表</button>
+        <input id="imageInput" type="file" accept="image/*" hidden>
+      </section>
+
+      <section id="noticeArea" class="notice-area" aria-live="polite"></section>
+
+      <section id="schedule" class="schedule-grid"></section>
+      <section id="emptyState" class="empty-state">
+        <div class="empty-icon">＋</div>
+        <h2>还没有课程</h2>
+        <p>可以上传课程表图片，也可以先手动添加一节课程。</p>
+        <button id="addCourseBtn" class="secondary-btn">手动添加课程</button>
+      </section>
+    </main>
+
+    <nav class="bottom-dock" aria-label="主操作">
+      <button id="dockToday" class="dock-item">
+        <span>⌂</span><small>今天</small>
+      </button>
+      <button id="dockAdd" class="dock-item">
+        <span>＋</span><small>添加</small>
+      </button>
+      <button id="dockAi" class="dock-item dock-main">
+        <span>✦</span><small>AI 排课</small>
+      </button>
+      <button id="dockHelp" class="dock-item">
+        <span>?</span><small>帮助</small>
+      </button>
+    </nav>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="dialog">
+      <div class="dialog-head">
+        <h2 id="modalTitle"></h2>
+        <button id="modalX" class="icon-btn small" aria-label="关闭">×</button>
+      </div>
+      <div id="modalBody" class="dialog-body"></div>
+      <div id="modalActions" class="dialog-actions"></div>
+    </div>
+  </div>
+
+  <script src="modules/storage.js"></script>
+  <script src="modules/editor.js"></script>
+  <script src="modules/help.js"></script>
+  <script src="modules/ai.js"></script>
+  <script src="modules/settings.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
