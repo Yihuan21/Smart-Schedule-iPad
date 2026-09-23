@@ -13,6 +13,7 @@ async function verifyPassword(password,stored){const [s,h]=String(stored).split(
 async function newSession(userId){const raw=b64(crypto.getRandomValues(new Uint8Array(32)));return {raw,hash:await sha256(raw),userId,expires:Date.now()+30*24*3600*1000}}
 async function auth(r,e){const h=r.headers.get('Authorization')||'';if(!h.startsWith('Bearer '))return null;const hash=await sha256(h.slice(7));const row=await e.DB.prepare('SELECT user_id,expires_at FROM sessions WHERE id_hash=?').bind(hash).first();if(!row||Number(row.expires_at)<Date.now()){if(row)await e.DB.prepare('DELETE FROM sessions WHERE id_hash=?').bind(hash).run();return null}return row.user_id}
 async function sendCode(r,e){
+ await e.DB.prepare('CREATE TABLE IF NOT EXISTS registration_otps (email TEXT PRIMARY KEY,code_hash TEXT NOT NULL,name TEXT NOT NULL,password_hash TEXT NOT NULL,expires_at INTEGER NOT NULL,attempts INTEGER NOT NULL DEFAULT 0,last_sent_at INTEGER NOT NULL)').run();
  const x=await body(r),email=String(x.email||'').trim().toLowerCase(),password=String(x.password||''),name=String(x.name||'').trim().slice(0,80);
  if(!/^\S+@\S+\.\S+$/.test(email))throw Error('请输入有效邮箱');
  if(name.length<1)throw Error('请输入姓名');
