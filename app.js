@@ -140,6 +140,8 @@ function showNotice(text, kind="info") {
   }, 5000);
 }
 
+https://yihuan21.github.io/Smart-Schedule-iPad/
+
 function startUpload() {
   document.getElementById("imageInput").click();
 }
