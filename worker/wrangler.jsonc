@@ -1,0 +1,8 @@
+{
+  "name": "schedule-ai-proxy",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-23",
+  "d1_databases": [{"binding":"DB","database_name":"smart-schedule-db","database_id":"dbfe03a2-fc31-4068-a502-24ec19b9b4d9"}],
+  "vars": {"ALLOWED_ORIGIN":"https://yihuan21.github.io"},
+  "secrets": {"required":["DEEPSEEK_API_KEY","ZHIPU_API_KEY"]}
+}
