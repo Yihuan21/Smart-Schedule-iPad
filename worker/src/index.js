@@ -7,7 +7,7 @@ function id(){return crypto.randomUUID()}
 function b64(u8){let s='';for(const x of u8)s+=String.fromCharCode(x);return btoa(s).replaceAll('+','-').replaceAll('/','_').replaceAll('=','')}
 function unb64(s){s=s.replaceAll('-','+').replaceAll('_','/');while(s.length%4)s+='=';const bin=atob(s);return Uint8Array.from(bin,c=>c.charCodeAt(0))}
 async function sha256(text){return b64(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text))))}
-async function hashPassword(password,salt){const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);const bits=await crypto.subtle.deriveBits({name:'PBKDF2',salt,iterations:120000,hash:'SHA-256'},key,256);return b64(new Uint8Array(bits))}
+async function hashPassword(password,salt){const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);const bits=await crypto.subtle.deriveBits({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},key,256);return b64(new Uint8Array(bits))}
 async function makePassword(password){if(typeof password!=='string'||password.length<8||password.length>200)throw Error('密码需要 8-200 个字符');const salt=crypto.getRandomValues(new Uint8Array(16));return b64(salt)+'.'+await hashPassword(password,salt)}
 async function verifyPassword(password,stored){const [s,h]=String(stored).split('.');if(!s||!h)return false;return await hashPassword(password,unb64(s))===h}
 async function newSession(userId){const raw=b64(crypto.getRandomValues(new Uint8Array(32)));return {raw,hash:await sha256(raw),userId,expires:Date.now()+30*24*3600*1000}}
@@ -17,7 +17,6 @@ async function sendCode(r,e){
  const x=await body(r),email=String(x.email||'').trim().toLowerCase(),password=String(x.password||''),name=String(x.name||'').trim().slice(0,80);
  if(!/^\S+@\S+\.\S+$/.test(email))throw Error('请输入有效邮箱');
  if(name.length<1)throw Error('请输入姓名');
- await makePassword(password);
  if(await e.DB.prepare('SELECT id FROM users WHERE email=?').bind(email).first())throw Error('这个邮箱已经注册');
  const old=await e.DB.prepare('SELECT last_sent_at FROM registration_otps WHERE email=?').bind(email).first();
  if(old&&Date.now()-Number(old.last_sent_at)<60000)throw Error('验证码发送过于频繁，请 60 秒后再试');
