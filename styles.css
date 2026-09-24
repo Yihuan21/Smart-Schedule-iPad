@@ -35,3 +35,15 @@
  .sidebar{display:none}.workspace{margin-left:0;padding:20px}
  .mobile-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
 }
+
+/* AI routine generation and compact weekly calendar */
+.compact-calendar{grid-template-columns:88px repeat(7,minmax(135px,1fr));min-width:1040px}
+.compact-calendar .calendar-time-label{padding:18px 8px;border-right:1px solid #f0ebf7;color:#9b93a7;font-size:11px;text-align:center;min-height:180px;display:flex;align-items:flex-start;justify-content:center}
+.course-day-cell{min-height:180px;padding:9px;display:flex;flex-direction:column;gap:8px}
+.calendar-empty{color:#b0a8ba;font-size:12px;text-align:center;padding:35px 5px}
+.course-chip{margin:0;border:1px solid #e7defb;box-shadow:0 3px 10px rgba(100,80,160,.05)}
+.ai-generation{padding:15px 17px;border:1px solid #e9e0fb;border-radius:15px;background:#faf8ff}
+.ai-generation-top{display:flex;justify-content:space-between;gap:12px;color:#7660c8;font-size:13px;margin-bottom:9px}
+.ai-generation-track{height:9px;border-radius:99px;background:#eee9f8;overflow:hidden}
+.ai-generation-track span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#8068e7,#b39af3);transition:width .35s ease}
+.routine-success{padding:15px 17px;border:1px solid #e4ddf8;border-radius:15px;background:#fbfaff}.routine-success h3{margin:0 0 6px;color:#5f4bb0}.routine-fail{padding:15px 17px;border:1px solid #f0dce5;border-radius:15px;background:#fffafd;color:#a94c6c}
