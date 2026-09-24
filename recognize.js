@@ -32,9 +32,9 @@ window.recognize=async function(file){
  var box=document.getElementById("recognitionResult");
  if(!file){if(box)box.innerHTML="<p class=\"err\">还没有选择课程表图片。</p>";return}
  try{
-  if(box)box.innerHTML="<div class=\"recognition-status\"><b>① 图片已选择</b><span>正在压缩图片…</span></div>";
+  if(box)box.innerHTML="<div class=\"recognition-progress\"><div class=\"recognition-progress-top\"><b>正在识别课程表</b><span id=\"recognitionPercent\">10%</span></div><div class=\"recognition-progress-track\"><div id=\"recognitionBar\" class=\"recognition-progress-bar\" style=\"width:10%\"></div></div><p>正在整理图片，请稍候…</p></div>";
   var image=await resizeImage(file);
-  if(box)box.innerHTML="<div class=\"recognition-status\"><b>② 图片已准备</b><span>正在调用智谱视觉 API…</span></div>";
+  if(box)box.innerHTML="<div class=\"recognition-progress\"><div class=\"recognition-progress-top\"><b>正在识别课程表</b><span id=\"recognitionPercent\">35%</span></div><div class=\"recognition-progress-track\"><div id=\"recognitionBar\" class=\"recognition-progress-bar\" style=\"width:35%\"></div></div><p>正在分析课程安排…</p></div>";
   var d=await api("/zhipu",{method:"POST",body:JSON.stringify({image:image,prompt:"识别课程表并严格输出 JSON：{courses:[{title,day,start,end,periods,room}]}。只识别图片实际出现且能确认的课程。课程可能只有1到7天，绝对不要补齐不存在的日期。day只能是周一到周日。明确时钟时间优先；连续节次合并为真实开始和结束时间；看不清不要猜。"} )});
   if(!d||!d.choices||!d.choices.length){
    var em="视觉 API 没有返回结果";
@@ -42,7 +42,7 @@ window.recognize=async function(file){
    else if(d&&typeof d.error==="string")em=d.error;
    throw new Error(em);
   }
-  if(box)box.innerHTML="<div class=\"recognition-status\"><b>③ AI 已返回</b><span>正在解析识别结果…</span></div>";
+  if(box)box.innerHTML="<div class=\"recognition-progress\"><div class=\"recognition-progress-top\"><b>正在识别课程表</b><span id=\"recognitionPercent\">75%</span></div><div class=\"recognition-progress-track\"><div id=\"recognitionBar\" class=\"recognition-progress-bar\" style=\"width:75%\"></div></div><p>正在整理识别结果…</p></div>";
   var raw=d.choices[0]&&d.choices[0].message&&d.choices[0].message.content||"";
   var a=raw.indexOf("{"),b=raw.lastIndexOf("}");
   var data;
@@ -66,7 +66,7 @@ window.recognize=async function(file){
   var clear=document.getElementById("clearRecognition");
   if(clear)clear.onclick=function(){box.innerHTML=""};
  }catch(e){
-  if(box)box.innerHTML="<div class=\"recognition-status error\"><b>识别失败</b><span>"+esc(e.message||"未知错误")+"</span></div><p class=\"muted\">如果这里显示 API 错误，说明图片已经上传，问题在视觉接口或返回内容。</p>";
+  if(box)box.innerHTML="<div class=\"recognition-status error\"><b>识别失败</b><span>"+esc(e.message||"请重新选择清晰的课程表图片再试一次。")+"</span></div>";
  }
 };
 function bindRecognition(){
