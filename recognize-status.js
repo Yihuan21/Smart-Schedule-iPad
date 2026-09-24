@@ -1,0 +1,1 @@
+window.addEventListener("DOMContentLoaded",function(){var input=document.getElementById("image");if(!input)return;var old=window.recognize;input.onchange=function(e){var f=e.target.files&&e.target.files[0];var box=document.getElementById("recognitionResult");if(!f)return;if(box)box.innerHTML="<div class=\"recognition-status\"><b>① 已选择图片</b><span>正在准备上传…</span></div>";old(f)};});
