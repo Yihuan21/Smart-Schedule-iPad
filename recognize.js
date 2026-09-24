@@ -51,7 +51,7 @@ window.recognize=async function(file){
   if(!list.length)throw new Error("API 已返回，但没有识别到可确认的课程");
   var days=[];
   list.forEach(function(v){if(v.day&&days.indexOf(v.day)<0)days.push(v.day)});
-  var html="<div class=\"recognition-head\"><div><b>④ 识别成功</b><span> 共 "+days.length+" 天、"+list.length+" 门/节课程</span></div><button id=\"clearRecognition\" class=\"secondary\" type=\"button\">清除</button></div><p class=\"muted\">已确认图片上传成功、视觉 API 返回成功并解析出课程；不会自动补齐其他天。</p><div class=\"recognition-days\">";
+  var html="<div class=\"recognition-head\"><div><b>识别成功</b><span> 共 "+days.length+" 天、"+list.length+" 门/节课程</span></div><button id=\"clearRecognition\" class=\"secondary\" type=\"button\">清除</button></div><p class=\"muted\">课程已经识别出来。先保存到“我的课表”，再生成 AI 完整作息。</p><button id=\"saveRecognized\" class=\"wide-btn\" type=\"button\">保存识别课程并进入 AI 排课</button><div class=\"recognition-days\">";
   days.forEach(function(day){
    html+="<div class=\"recognition-day\"><b>"+esc(day)+"</b>";
    list.filter(function(v){return v.day===day}).forEach(function(v){
@@ -64,7 +64,7 @@ window.recognize=async function(file){
   html+="</div>";
   if(box)box.innerHTML=html;
   var clear=document.getElementById("clearRecognition");
-  if(clear)clear.onclick=function(){box.innerHTML=""};
+  if(clear)clear.onclick=function(){box.innerHTML=""}; var save=document.getElementById("saveRecognized"); if(save)save.onclick=async function(){save.disabled=true;save.textContent="正在保存…";try{await window.importRecognizedCourses(list);save.textContent="已保存，正在进入 AI 优化…";setTimeout(function(){if(window.generateRoutine)window.generateRoutine()},250)}catch(e){save.disabled=false;save.textContent="保存识别课程并进入 AI 排课";if(box)box.insertAdjacentHTML("afterbegin","<p class=\"err\">保存失败："+esc(e.message||"请重试")+"</p>")}};
  }catch(e){
   if(box)box.innerHTML="<div class=\"recognition-status error\"><b>识别失败</b><span>"+esc(e.message||"请重新选择清晰的课程表图片再试一次。")+"</span></div>";
  }
